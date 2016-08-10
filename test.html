@@ -1,0 +1,43 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+<title>TEST</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script>
+var app = angular.module("myApp", []);
+app.controller('myController', function() {
+  this.count = 0;
+  this.inc = function() { this.count++; }
+  this.dec = function() { this.count--; }
+});
+</script>
+</head>
+<body>
+<div ng-controller="myController as myCtrl">
+  {{myCtrl.count}}
+  <button ng-click="myCtrl.inc()">+1</button>
+  <button ng-click="myCtrl.dec()">-1</button>
+  test it again
+</div>
+</body>
+</html>
+
+var norNenpi = process.argv[2];
+var hyNenpi = process.argv[3];
+var gasKakaku = process.argv[4];
+var sagaku = process.argv[5];
+var gasTank = 35;
+
+var mantanKakaku = gasTank * gasKakaku;
+
+//mantan deno kyori
+var mantan_hy = gasTank * hyNenpi;
+var mantan_nor = gasTank * norNenpi;
+
+var cost_hy = 10000/mantan_hy * mantanKakaku;
+var cost_nor = 10000/mantan_nor * mantanKakaku;
+var difCost = cost_nor - cost_hy;
+
+var result = sagaku / difCost;
+
+console.log(result);

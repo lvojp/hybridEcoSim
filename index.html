@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <!-- <script type="text/javascript" src="./myscript.js"></script> -->
+    <title>Hybridcar economy Simulator</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+
+                <h1>ハイブリッドカー エコノミカル シミュレーター</h1>
+                <span style="padding-left:1rem;">〜ノーマルガソリン車、ハイブリッド車、燃費の良さで車体価格の差を取り戻せるか〜</span>
+                <hr style="margin-bottom:30px;" />
+
+                <p>
+                    このプログラムは、ノーマルガソリン車とハイブリッド車の燃費、
+                    <br> 仮定されるガソリン1Lの価格と、ノーマルガソリン車とハイブリッド車の車体価格の違いを入力することで、
+                    <br/> 何キロメートル走れば、以降、車体価格の違いの分を取り戻せるかをシミュレートします。
+                </p>
+
+                <div class="container" style="margin:40px 0;">
+                    <form class=" form-inline ">
+                        <div class="form-group ">
+                            <table class="table table-bordered table-hover ">
+                                <tbody>
+
+                                    <tr>
+                                        <td>
+                                            <label class="form-label" for="input">ノーマルエンジンの燃費</label>
+                                        </td>
+                                        <td>
+                                            <input type="text " class="form-control" ng-model="nrmEff "> (km/L)</input>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <label class="form-label" for="input">ハイブリッドエンジンの燃費</label>
+                                        </td>
+                                        <td>
+                                            <input type="text " class="form-control " ng-model="hyEff "> (km/L)</input>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <label class="form-label" for="input">ガソリン価格</label>
+                                        </td>
+                                        <td>
+                                            <input type="text " class="form-control " ng-model="gasPr "> (円/L)</input>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <label class="form-label" for="input">ハイブリッド車とノーマルエンジン車の差額</label>
+                                        </td>
+                                        <td>
+                                            <input type="text " class="form-control " onblur="zentohan(this) " ng-model="difPr "> (円)</input>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+
+                <p>
+                    およそ <span style="color:#4682B4; font-size:3rem;">{{difPr / (gasPr/nrmEff - gasPr/hyEff) | number:0}}</span>km 走れば、それ以降はお得です。
+                </p>
+
+            </div>
+        </div>
+
+        <div style="margin-top:100px;">
+            <a href="http://giraffeong.com">G線上のきりん</a> /
+            <a href="http://wisdomtrees.com">WisdomTrees</a>
+        </div>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js "></script>
+    <script src="js/bootstrap.min.js "></script>
+</body>
+
+</html>
